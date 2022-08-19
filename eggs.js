@@ -7,12 +7,25 @@ input.onButtonPressed(Button.A, function () {
 
 basic.forever(function () {
     //store readings from the accelerometer into an array variable
+    let accelerationValues = readAccelerometer()
+
     //calculate the magnitude of acceleration from the array of accelerometer values
+    let accelerationMagnitude = calculateAccelerationMagnitude(accelerationValues)
+
     //create an array of the three acceleration values and the magnitude
+    let accelerationAndMagnitude = [accelerationValues[0],accelerationValues[1],accelerationValues[2],accelerationMagnitude]
+
     //check if the acceleration magnitude is more than is allowed by the system
+    let accelerationBeyondMaximum = isAccelerationMoreThanIsAllowed(accelerationMagnitude)
+
     //use this value to set the maximum acceleration was reached variable to be either true or false
+    setMaximumAccelerationFlagIfExceededMaximum(accelerationBeyondMaximum)
+
     //display feedback about acceleration
+    displayAccelerationFeedback(accelerationBeyondMaximum)
+
     //for debugging purposes, print out a string that shows the acceleration, among other things
+    printAccelerationString(accelerationAndMagnitude)
 
     //Include a brief pause of the system before looping again 
     basic.pause(5)
@@ -95,7 +108,7 @@ function showNegativeFeedback() {
     basic.showIcon(IconNames.Sad)
 }
 
-function setMaximumAccelerationFlagIfExceededMaximum() {
+function setMaximumAccelerationFlagIfExceededMaximum(maxAccelerationWasExceeded: boolean) {
     if (!maxAccelerationWasExceeded) {
         maxAccelerationWasExceeded = true
     }
