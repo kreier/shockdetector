@@ -140,3 +140,10 @@ function printAccelerationString(values: number[]) {
 ## Working Solution
 
 You should work this out on your own ;)
+
+## Students work visualized
+
+After setting up Github accounts for all students, we created this first repository and each student forked it and started working on the initial code on its own. After some time they contributed their work upstream:
+
+![Network graph of shockdetector](docs/network_2022-08.png)
+
